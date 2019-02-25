@@ -36,6 +36,10 @@ function risklogin(params): ThunkAction {
 
         let onFailure = (error, dispatch) => {
             console.log('登录失败 ');
+            dispatch({
+                type: "LOGIN",
+                data:"adiafdasdf"
+            });
             return Promise.reject(error);
         };
 

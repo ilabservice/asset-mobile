@@ -34,7 +34,7 @@ class App extends PureComponent {
         InteractionManager.runAfterInteractions(() => {
             this.time = TimerMixin.setTimeout(()=>{
                 this.skip();
-            },3000);
+            },600);
         })
 
     }

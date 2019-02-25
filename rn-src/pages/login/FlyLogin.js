@@ -27,8 +27,8 @@ class FlyLogin extends PureComponent {
     //测试redux状态持久化
     doLogin=()=>{
         var params={
-            username: "sample_deptB_manager@ilabhz",
-            password: 'test1234'
+            username: "ilabservice",
+            password: 'ilabservice'
         };
         let promise = this.props.dispatch(risklogin(params));
         promise.then((data) => {

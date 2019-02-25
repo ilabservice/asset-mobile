@@ -4,8 +4,9 @@
 'use strict';
 import React, {PureComponent} from 'react';
 const {connect} = require('react-redux');
-import { Platform,StyleSheet} from 'react-native';
+import { Platform,StyleSheet,Easing,Animated} from 'react-native';
 import {createStackNavigator,createAppContainer} from 'react-navigation';
+import StackViewStyleInterpolator from "react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator";
 const SceneUtils = require('../utils/SceneUtils');
 const NetworkService = require('../utils/NetworkService');
 //页面
@@ -56,10 +57,12 @@ class FlyRouters extends PureComponent {
                 }
             },
             mode: Platform.OS === 'ios' ? 'card' : 'modal',
-            headerMode:'float',  // screen   no
+            headerMode:'no',  // screen   no
             headerBackTitleVisible:true,
             headerTransitionPreset:'fade-in-place',//uikit   when headerMode: float is enabled.
-
+            transitionConfig: () => ({
+                screenInterpolator: StackViewStyleInterpolator.forHorizontal,
+            }),
         };
 
         const AppNavigator = createStackNavigator(routeConfigs,stackNavigatorConfig);
