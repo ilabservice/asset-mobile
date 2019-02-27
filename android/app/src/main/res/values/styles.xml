@@ -2,6 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!--<style name="AppTheme" parent="Theme.ReactNative.AppCompat.Light.NoActionBar.FullScreen">-->
         <!-- Customize your theme here. -->
     </style>
 

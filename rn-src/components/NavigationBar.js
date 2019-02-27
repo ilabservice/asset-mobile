@@ -2,15 +2,17 @@
  * 通用顶部标题栏
  * Created by RenPeng on 2018/3/15.
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import * as Images from '../common/Images';
+// import * as Images from '../common/Images';
 import DeviceUtils from '../utils/DeviceUtils';
 import Color from "../common/Color";
 import CommonStatusBar from "./CommonStatusBar";
+import LinearGradient from 'react-native-linear-gradient';
+
 const SceneUtils = require('../utils/SceneUtils');
 
-export default class NavigationBar extends Component<{}> {
+export default class NavigationBar extends PureComponent {
     // 构造
     constructor(props) {
         super(props);
@@ -27,7 +29,7 @@ export default class NavigationBar extends Component<{}> {
                 <View style={styles.titleBar}>
                     <CommonStatusBar/>
                     <TouchableOpacity activeOpacity={0.75} style={styles.button} onPress={this.back}>
-                        <Image style={styles.button_img} source={Images.btn_back} resizeMode={'stretch'}/>
+                        {/*<Image style={styles.button_img} source={require("../images/btn_back.png")} resizeMode={'stretch'}/>*/}
                     </TouchableOpacity>
                     <Text style={styles.title} numberOfLines={1}>{this.props.title || '页面标题'}</Text>
                     {this.props.rightText ? (
@@ -53,28 +55,37 @@ export default class NavigationBar extends Component<{}> {
              * 手机布局
              */
             return (
-                <View style={styles.titleBar}>
-                    <CommonStatusBar/>
-                    <TouchableOpacity activeOpacity={0.75} style={styles.button} onPress={this.back}>
-                        <Image style={styles.button_img} source={Images.btn_back} resizeMode={'stretch'}/>
-                    </TouchableOpacity>
-                    <Text style={styles.title} numberOfLines={1}>{this.props.title || '页面标题'}</Text>
-                    {this.props.rightText ? (
-                        <TouchableOpacity activeOpacity={0.75} style={styles.button}
-                                          onPress={this.props.onPressRight && this.props.onPressRight}>
-                            <Text style={{fontSize: 16, color: '#FFFFFF', textAlign: 'center',}}
-                                  numberOfLines={2}>{this.props.rightText}</Text>
-                        </TouchableOpacity>
-                    ) : (
-                        this.props.rightIcon ? (
+                <View style={{width: DeviceUtils.WIDTH, height: 44 + DeviceUtils.STATUS_BAR_HEIGHT,}}>
+                    <LinearGradient
+                        start={{x: 1, y: 0}} end={{x: 0.3, y: 0}}
+                        colors={['#7CD7FF', '#78CEFF', '#6CAAFF']}
+                        style={styles.titleBar}>
+                        <CommonStatusBar/>
+                        {this.props.leftText ?
+                            <Text style={{fontSize: 16, color: '#FFFFFF', textAlign: 'center', marginLeft: 15}}
+                                  numberOfLines={2}>{this.props.leftText}</Text> :
+                            <TouchableOpacity activeOpacity={0.75} style={styles.button} onPress={this.back}>
+                                {/*<Image style={styles.button_img} source={require("../images/btn_back.png")} resizeMode={'stretch'}/>*/}
+                            </TouchableOpacity>
+                        }
+                        <Text style={styles.title} numberOfLines={1}>{this.props.title}</Text>
+                        {this.props.rightText ? (
                             <TouchableOpacity activeOpacity={0.75} style={styles.button}
                                               onPress={this.props.onPressRight && this.props.onPressRight}>
-                                <Image style={{width: 22, height: 22}} source={this.props.rightIcon}/>
+                                <Text style={{fontSize: 16, color: '#FFFFFF', textAlign: 'center',}}
+                                      numberOfLines={2}>{this.props.rightText}</Text>
                             </TouchableOpacity>
                         ) : (
-                            <View style={styles.button}/>
-                        )
-                    )}
+                            this.props.rightIcon ? (
+                                <TouchableOpacity activeOpacity={0.75} style={styles.button}
+                                                  onPress={this.props.onPressRight && this.props.onPressRight}>
+                                    <Image style={{width: 22, height: 22}} source={this.props.rightIcon}/>
+                                </TouchableOpacity>
+                            ) : (
+                                <View style={styles.button}/>
+                            )
+                        )}
+                    </LinearGradient>
                 </View>
             )
         }
@@ -124,9 +135,11 @@ const styles_pad = StyleSheet.create({
 });
 const styles_mobile = StyleSheet.create({
     titleBar: {
+        position: 'absolute',
+        top: 0,
+        width: DeviceUtils.WIDTH,
         height: 44 + DeviceUtils.STATUS_BAR_HEIGHT,
         paddingTop: DeviceUtils.STATUS_BAR_HEIGHT,
-        backgroundColor: Color.THEME,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',

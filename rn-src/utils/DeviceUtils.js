@@ -49,7 +49,7 @@ export default class DeviceUtils {
     // 是否是平板电脑
     //Todo  NativeModules.ScreenInfo 废弃掉了
     // static IS_TABLET = DeviceUtils.IS_IOS ? DeviceInfo.isTablet() : NativeModules.ScreenInfo.isTablet;
-    static IS_TABLET = DeviceUtils.IS_IOS ? DeviceInfo.isTablet() : true;
+    static IS_TABLET = DeviceUtils.IS_IOS ? DeviceInfo.isTablet() : DeviceInfo.isTablet();
     // APP版本号   如："1.0.0"
     static APP_VERSION = DeviceInfo.getVersion();
     // APP版本    如：100

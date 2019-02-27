@@ -59,7 +59,7 @@ class FlyRouters extends PureComponent {
             mode: Platform.OS === 'ios' ? 'card' : 'modal',
             headerMode:'no',  // screen   no
             headerBackTitleVisible:true,
-            headerTransitionPreset:'fade-in-place',//uikit   when headerMode: float is enabled.
+            headerTransitionPreset:'fade-in-place',
             transitionConfig: () => ({
                 screenInterpolator: StackViewStyleInterpolator.forHorizontal,
             }),

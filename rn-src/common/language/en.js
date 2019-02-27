@@ -98,7 +98,7 @@ export default {
         operation_value: 'Operation Value',
         alarm_value: 'Alarm Value',
         parameter_sensor: 'Parameter Sensor',
-        sensor_location: 'Position of the sensor in the device',
+        sensor_location: 'Position of the sensor in the cabinet',
 
     },
     sample: {

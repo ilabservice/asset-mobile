@@ -13,48 +13,57 @@ import {
     DeviceEventEmitter,
     InteractionManager,
     AppState,
+    Image,
     Platform
 } from 'react-native';
 import {connect} from 'react-redux';
-import { createBottomTabNavigator, TabBarBottom, createAppContainer } from 'react-navigation';
+import {createBottomTabNavigator, TabBarBottom, createAppContainer} from 'react-navigation';
+
 const SceneUtils = require('../utils/SceneUtils');
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const FlyScreenHome = require('./home/FlyScreenHome');
 const FlyScreenMine = require('./me/FlyScreenMine');
-
 const FlyScreenShare = require('./share/FlyScreenShare');
-const FlyScreenDevice = require('./device/FlyScreenDevice');
+const FlyScreenCabinet = require('./cabinet/FlyScreenCabinet');
+const Screen1 = require('./Screen1');
 
 const tabInfo = [{
     routeName: 'FlyScreenHome',
     screen: FlyScreenHome,
     title: '首页',
-    normalImage: 'ios-information-circle',
-    selectedImage: 'ios-information-circle'
-},{
-    routeName: 'FlyScreenDevice',
-    screen:FlyScreenDevice,
-    title:'设备',
-    normalImage: 'ios-options',
-    selectedImage: 'ios-options'
-},{
+    normalImage: require('../images/tabs/home.png'),
+    selectedImage: require('../images/tabs/home_selected.png')
+}, {
+    routeName: 'FlyScreenCabinet',
+    screen: FlyScreenCabinet,
+    title: '智能柜',
+    normalImage: require('../images/tabs/cabinet.png'),
+    selectedImage: require('../images/tabs/cabinet_selected.png')
+}, {
     routeName: 'FlyScreenShare',
     screen: FlyScreenShare,
-    title: '分享',
-    normalImage: 'ios-information-circle',
-    selectedImage: 'ios-information-circle'
-},{
+    title: '化学品',
+    normalImage: require('../images/tabs/chemicals.png'),
+    selectedImage: require('../images/tabs/chemicals_selected.png')
+}, {
+    routeName: 'Screen1',
+    screen: Screen1,
+    title: '记录',
+    normalImage: require('../images/tabs/home.png'),
+    selectedImage: require('../images/tabs/home_selected.png')
+}, {
     routeName: 'FlyScreenMine',
-    screen:FlyScreenMine,
-    title:'我的',
-    normalImage: 'ios-options',
-    selectedImage: 'ios-options'
+    screen: FlyScreenMine,
+    title: '个人中心',
+    normalImage: require('../images/tabs/me.png'),
+    selectedImage: require('../images/tabs/me_selected.png')
 }];
 
 class FlyTabsView extends PureComponent {
     constructor(props) {
         super(props);
-        this.initialRouteName = tabInfo[0].routeName;
+        this.initialRouteName = tabInfo[1].routeName;
     }
 
     _onNavigationStateChange(preState, newState, action) {
@@ -95,9 +104,9 @@ class FlyTabsView extends PureComponent {
             lazy: true,
             backBehavior: 'none',
             tabBarOptions: {
-                pressColor:'blue',
+                pressColor: 'blue',
                 pressOpacity: 0.7,
-                activeTintColor:'#6B718C',
+                activeTintColor: '#6B718C',
                 inactiveTintColor: '#B0B5BB',
                 indicatorStyle: {height: 0},
                 scrollEnabled: false,
@@ -106,10 +115,10 @@ class FlyTabsView extends PureComponent {
                     marginTop: -0.5,
                 },
                 style: {
-                    height: 55,
-                    borderTopWidth: 0.5,
-                    borderTopColor:'green',
-                    backgroundColor:'white'
+                    height: 49,
+                    // borderTopWidth: 0.5,
+                    // borderTopColor: 'green',
+                    backgroundColor: 'white'
                 },
                 showIcon: true,
             }
@@ -117,9 +126,9 @@ class FlyTabsView extends PureComponent {
 
         let TabsContainer = createBottomTabNavigator(routeConfigs, tabNavigatorConfig);
         return (
-                <TabsContainer  ref={nav =>{
-                    SceneUtils.setTabNavigator(nav,tabInfo)
-                }} />
+            <TabsContainer ref={nav => {
+                SceneUtils.setTabNavigator(nav, tabInfo)
+            }}/>
         );
     }
 }
@@ -128,14 +137,12 @@ class TabBarItem extends PureComponent {
     render() {
         let imgSource = (this.props.focused) ? this.props.selectedImage : this.props.normalImage;
         return (
-            <Ionicons name={imgSource} size={25} color={this.props.tintColor} />
+            <Image source={imgSource} style={{width:20,}} resizeMode="contain"/>
         );
     }
 }
 function select(store) {
-    return {
-
-    };
+    return {};
 }
 
 module.exports = connect(select)(FlyTabsView);

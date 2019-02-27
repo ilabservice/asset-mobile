@@ -45,7 +45,7 @@ class Screen1 extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <NavigationBar title={Language.get(Language.TEXTS.account.configuration)}/>
+                <NavigationBar leftText={"iLabCabinet"} />
 
                 <Text style={{fontSize:30,color:'#555555',alignSelf:'center'}}>页面1</Text>
 
