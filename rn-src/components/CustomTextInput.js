@@ -10,7 +10,7 @@ export type Props = {
     height: number;
     showSegment: boolean;
     defaultValue: string;
-    style: any;
+    ContainerStyle: any;
     labelWidth: number;
     errMsg: string;
     showErrIcon:boolean;
@@ -40,7 +40,7 @@ class CustomTextInput extends PureComponent {
         height: PropTypes.number,
         showSegment: PropTypes.bool,
         defaultValue: PropTypes.string,
-        style: PropTypes.any,
+        ContainerStyle: PropTypes.any,
         labelWidth: PropTypes.number,
         errMsg: PropTypes.string,
         showErrIcon: PropTypes.bool,
@@ -111,31 +111,32 @@ class CustomTextInput extends PureComponent {
 
         return (
             <View>
-                <View style={[styles.container, props.style]}>
+                <View style={[styles.container, props.ContainerStyle]}>
                     <View style={[styles.wrapper , props.showSegment?styles.wrapperSegment:null,{height:height}]}>
                         <View style={[styles.leftWrapper, {width: props.labelWidth,height: height}]}>
                             <Text style={styles.text}>{props.text}</Text>
                         </View>
-                        {/*<TextInput style={[*/}
-                            {/*styles.textInput,*/}
-                            {/*props.textInputStyle]}*/}
-                                   {/*onChangeText={props.onChangeText}*/}
-                                   {/*editable={props.editable}*/}
-                                   {/*underlineColorAndroid="transparent"*/}
-                                   {/*keyboardType={props.keyboardType}*/}
-                                   {/*onSubmitEditing={props.onSubmitEditing}*/}
-                                   {/*defaultValue={props.defaultValue}*/}
-                                   {/*placeholder={props.placeholder}*/}
-                                   {/*onBlur = {props.onBlur}*/}
-                                   {/*onFocus = {props.onFocus}*/}
-                                   {/*secureTextEntry={props.secureTextEntry}*/}
-                                   {/*multiline={props.multiline}*/}
-                                   {/*maxLength={props.maxLength}*/}
-                                   {/*returnKeyType={props.returnKeyType||"none"}*/}
-                                   {/*autoFocus={props.autoFocus}*/}
-                                   {/*placeholderTextColor={'red'}*/}
-                                   {/*ref={"textInput"}*/}
-                        {/*/>*/}
+                        <TextInput style={[
+                            styles.textInput,
+                            props.textInputStyle]}
+                                   onChangeText={props.onChangeText}
+                                   editable={props.editable}
+                                   underlineColorAndroid="transparent"
+                                   keyboardType={props.keyboardType}
+                                   onSubmitEditing={props.onSubmitEditing}
+                                   defaultValue={props.defaultValue}
+                                   placeholder={props.placeholder}
+                                   onBlur = {props.onBlur}
+                                   onFocus = {props.onFocus}
+                                   secureTextEntry={props.secureTextEntry}
+                                   multiline={props.multiline}
+                                   maxLength={props.maxLength}
+                                   returnKeyType={props.returnKeyType||"done"}
+                                   autoFocus={props.autoFocus}
+                                   placeholderTextColor={'#DDDDDD'}
+                                   ref={"textInput"}
+                                   clearButtonMode={'while-editing'}
+                        />
                         {content}
                     </View>
                     {errIcon}
@@ -171,16 +172,18 @@ var styles = StyleSheet.create({
         justifyContent:'center',
         marginLeft: 15,
         marginRight: 15,
+        alignItems: 'flex-end'
+        // backgroundColor:'yellow'
     },
     textInput: {
         fontSize: 14,
         borderWidth: 0,
-        marginTop:2,
+        // marginTop:2,
         flex: 1
     },
     text: {
         fontSize: 14,
-        color: 'yellow',
+        color: '#565656',
     },
     rightContentWrapper: {
         justifyContent:'center',
