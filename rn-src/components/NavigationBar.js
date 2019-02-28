@@ -65,7 +65,7 @@ export default class NavigationBar extends PureComponent {
                             <Text style={{fontSize: 16, color: '#FFFFFF', textAlign: 'center', marginLeft: 15}}
                                   numberOfLines={2}>{this.props.leftText}</Text> :
                             <TouchableOpacity activeOpacity={0.75} style={styles.button} onPress={this.back}>
-                                {/*<Image style={styles.button_img} source={require("../images/btn_back.png")} resizeMode={'stretch'}/>*/}
+                                <Image style={styles.button_img} source={require("../images/btn_back.png")} resizeMode={'stretch'}/>
                             </TouchableOpacity>
                         }
                         <Text style={styles.title} numberOfLines={1}>{this.props.title}</Text>

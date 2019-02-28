@@ -272,7 +272,7 @@ const styles_mobile = StyleSheet.create({
     cardone: {
         marginLeft: 15,
         marginRight: 15,
-        height: 155,
+        height: 174,
         backgroundColor: 'white',
         marginTop: 64 + DeviceUtils.STATUS_BAR_HEIGHT,
         borderRadius: 5,
@@ -297,10 +297,10 @@ const styles_mobile = StyleSheet.create({
         alignItems: 'center'
     },
     cardTwo:{
-        marginTop: 10,
+        marginTop: 20,
         marginLeft:15,
         marginRight:15,
-        height: 140,
+        height: 146,
         backgroundColor: 'white',
         borderRadius: 5,
         shadowColor: '#33353A',

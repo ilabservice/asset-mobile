@@ -29,6 +29,8 @@ import Swipeable from 'react-native-swipeable';
 import RefreshFlatList from "../../components/RefreshFlatList";
 import DeviceUtils from "../../utils/DeviceUtils";
 import CuttingLine from "../../components/CuttingLine";
+import CustomModal from "../../components/CustomModal";
+
 
 class FlyScreenCabinet extends PureComponent {
     props: Props;
@@ -69,18 +71,18 @@ class FlyScreenCabinet extends PureComponent {
                 <TouchableOpacity
                     style={{height: 100, backgroundColor: Color.THEME, justifyContent: 'center', paddingLeft: 15}}
                     activeOpacity={1}
-                    onPress={() => alert(0)}>
+                    onPress={() => this.delModal.open()}>
                     <Image style={{width: 35, height: 35}} source={require('../../images/cabinet/del.png')}/>
                 </TouchableOpacity>
             ]}>
-                <View style={{
+                <TouchableOpacity style={{
                     flex: 1, flexDirection: 'row', backgroundColor: 'white',
                     borderRadius: 8,
                     shadowColor: '#33353A',
                     shadowOffset: {width: 0, height: 2},
                     shadowRadius: 2,
                     shadowOpacity: 0.1,
-                }}>
+                }} onPress={() =>{SceneUtils.gotoScene('CabinetDetail')}} activeOpacity={0.85}>
                     {/*左边*/}
                     <View style={{
                         height: 100,
@@ -113,7 +115,7 @@ class FlyScreenCabinet extends PureComponent {
                             <Text style={{color: '#BAB8BE', fontSize: 14, marginLeft: 5}}>存放化学品数 ：36</Text>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
             </Swipeable>
         )
     };
@@ -121,7 +123,7 @@ class FlyScreenCabinet extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <NavigationSearchBar leftText={"iLabCabinet"}/>
+                <NavigationSearchBar leftText={"iLabCabinet"} onPressRight={()=>{SceneUtils.gotoScene('EditCabinet')}}/>
                 <RefreshFlatList
                     style={styles.list}
                     ref={o => this.flatlist = o}
@@ -131,6 +133,30 @@ class FlyScreenCabinet extends PureComponent {
                     renderItem={this.renderItem}
                     onRefresh={this.onRefresh}
                     onPressReload={this.onRefresh}/>
+
+                <CustomModal ref={(ref)=> this.delModal= ref} pressBackdropToClose={true} animationType={'fade'}>
+                    <View style={{width:DeviceUtils.WIDTH*0.7,height:208,alignItems:'center'}}>
+                        <View style={{width:263,height:170,backgroundColor:"white",position:'absolute',top:38}}>
+                            <View style={{flex: 1,marginTop:38,justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{color:'#54A2FF', fontSize: 16,}}>确定删除此智能柜吗？</Text>
+                            </View>
+                            <View style={{flexDirection:'row',height:35}}>
+                                <TouchableOpacity  onPress={() => {alert(0)}} activeOpacity={0.7}
+                                                  style={{flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'#BBDAFF'}}>
+                                    <Text style={{color:'#54A2FF', fontSize: 16,}}>取消</Text>
+
+                                </TouchableOpacity>
+                                <TouchableOpacity  onPress={() => {alert(0)}} activeOpacity={0.7}
+                                                  style={{flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor:'#54A2FF'}}>
+                                    <Text style={{color:'white', fontSize: 16,}}>确定</Text>
+
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <Image source={require('../../images/cabinet/ball.png')}
+                               style={{width: 58, height: 76}}resizeMode="contain"/>
+                    </View>
+                </CustomModal>
             </View>
         )
     }

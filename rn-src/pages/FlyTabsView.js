@@ -14,6 +14,7 @@ import {
     InteractionManager,
     AppState,
     Image,
+    StyleSheet,
     Platform
 } from 'react-native';
 import {connect} from 'react-redux';
@@ -137,10 +138,16 @@ class TabBarItem extends PureComponent {
     render() {
         let imgSource = (this.props.focused) ? this.props.selectedImage : this.props.normalImage;
         return (
-            <Image source={imgSource} style={{width:20,}} resizeMode="contain"/>
+            <Image source={imgSource} style={styles.img} resizeMode="contain"/>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    img: {width:20,},
+
+});
+
 function select(store) {
     return {};
 }

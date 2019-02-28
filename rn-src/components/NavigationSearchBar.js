@@ -1,6 +1,6 @@
 /**
  * 通用顶部标题栏
- * Created by RenPeng on 2018/3/15.
+ * Created by meekoma on 2018/3/15.
  */
 import React, {PureComponent} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View,TextInput} from 'react-native';
@@ -11,7 +11,12 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const SceneUtils = require('../utils/SceneUtils');
 
-export default class NavigationSearchBar extends PureComponent {
+export type Props = {
+    onPressRight: () => Void;
+};
+
+
+class NavigationSearchBar extends PureComponent {
     // 构造
     constructor(props) {
         super(props);
@@ -68,9 +73,12 @@ export default class NavigationSearchBar extends PureComponent {
                                            resizeMode="contain"/>
                                 </TouchableOpacity>
                             </View>
-                            <TouchableOpacity style={{paddingRight: 15,paddingLeft: 22}} onPress={() => {alert(0)}}>
-                                <Image source={require('../images/cabinet/add.png')} style={{width: 30, height: 30}}
-                                       resizeMode="contain"/>
+                            <TouchableOpacity style={{paddingRight: 15,paddingLeft: 22}} onPress={() => {
+                                if(this.props.onPressRight){
+                                    this.props.onPressRight();
+                                }
+                            }}>
+                                <Image source={require('../images/cabinet/add.png')} style={{width: 30, height: 30}} resizeMode="contain"/>
                             </TouchableOpacity>
                         </View>
                     </LinearGradient>
@@ -115,3 +123,5 @@ const styles_mobile = StyleSheet.create({
 
 });
 const styles = DeviceUtils.IS_TABLET ? styles_pad : styles_mobile;
+
+module.exports = NavigationSearchBar;
