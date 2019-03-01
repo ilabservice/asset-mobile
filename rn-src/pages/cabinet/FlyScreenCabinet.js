@@ -123,7 +123,11 @@ class FlyScreenCabinet extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <NavigationSearchBar leftText={"iLabCabinet"} onPressRight={()=>{SceneUtils.gotoScene('EditCabinet')}}/>
+                <NavigationSearchBar
+                    leftText={"iLabCabinet"}
+                    onPressRight={()=>{SceneUtils.gotoScene('CabinetEdit')}}
+                    onFilter={()=>{SceneUtils.gotoScene('Cabinetsearch')}}
+                />
                 <RefreshFlatList
                     style={styles.list}
                     ref={o => this.flatlist = o}

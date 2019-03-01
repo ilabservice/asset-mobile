@@ -32,7 +32,7 @@ import CustomModal from "../../components/CustomModal";
 import NavigationBar from "../../components/NavigationBar";
 import CustomTextInput from "../../components/CustomTextInput";
 
-class EditCabinet extends PureComponent {
+class CabinetEdit extends PureComponent {
     props: Props;
 
     constructor(props) {
@@ -190,4 +190,4 @@ function select(store) {
     return {};
 }
 
-module.exports = connect(select)(EditCabinet);
+module.exports = connect(select)(CabinetEdit);

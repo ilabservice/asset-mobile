@@ -226,7 +226,11 @@ class CabinetDetail extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <NavigationBar title={"智能柜详情"} rightIcon={require("../../images/cabinet/edit.png")} onPressRight={()=>{SceneUtils.gotoScene('EditCabinet')}}/>
+                <NavigationBar
+                    title={"智能柜详情"}
+                    rightIcon={require("../../images/cabinet/edit.png")}
+                    onPressRight={()=>{SceneUtils.gotoScene('CabinetEdit')}}
+                />
                 <View style={{
                     width: DeviceUtils.WIDTH * 0.62,
                     marginTop: 10,

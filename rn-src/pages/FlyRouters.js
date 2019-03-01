@@ -18,7 +18,9 @@ const StartPageView = require("./splash/StartPageView");
 
 //柜子
 const CabinetDetail = require('./cabinet/CabinetDetail');
-const EditCabinet = require('./cabinet/EditCabinet');
+const CabinetEdit = require('./cabinet/CabinetEdit');
+const Cabinetsearch = require('./cabinet/Cabinetsearch');
+
 
 
 
@@ -32,8 +34,8 @@ const RouteList = {
     'startView': StartPageView,
      //柜子
     'CabinetDetail': CabinetDetail,
-    'EditCabinet': EditCabinet,
-
+    'CabinetEdit': CabinetEdit,
+    'Cabinetsearch': Cabinetsearch,
 
     'Screen1': Screen1,
     'Screen2': Screen2,

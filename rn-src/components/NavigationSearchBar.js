@@ -13,16 +13,21 @@ const SceneUtils = require('../utils/SceneUtils');
 
 export type Props = {
     onPressRight: () => Void;
+    onFilter: () => Void;
+    rightText: string;
+    showfiltercon: boolean;
 };
 
 
 class NavigationSearchBar extends PureComponent {
-    // 构造
     constructor(props) {
         super(props);
-        // 初始状态
         this.state = {};
     }
+
+    static defaultProps = {
+        showfiltercon:true
+    };
 
     render() {
         if (DeviceUtils.IS_TABLET) {
@@ -68,18 +73,33 @@ class NavigationSearchBar extends PureComponent {
                                     autoCorrect={false}
                                     onChangeText={(text) => this.key = text}
                                 />
-                                <TouchableOpacity style={{paddingRight: 15,paddingLeft: 15,height:30, justifyContent:'center',}} onPress={() => {alert(0)}}>
+                                {this.props.showfiltercon?
+                                <TouchableOpacity style={{paddingRight: 15,paddingLeft: 15,height:30, justifyContent:'center',}} onPress={() => {
+                                    if(this.props.onFilter){
+                                        this.props.onFilter();
+                                    }
+                                }}>
                                     <Image source={require('../images/cabinet/filter.png')} style={{width: 13, height: 13}}
                                            resizeMode="contain"/>
-                                </TouchableOpacity>
-                            </View>
-                            <TouchableOpacity style={{paddingRight: 15,paddingLeft: 22}} onPress={() => {
-                                if(this.props.onPressRight){
-                                    this.props.onPressRight();
+                                </TouchableOpacity>:<View/>
                                 }
-                            }}>
-                                <Image source={require('../images/cabinet/add.png')} style={{width: 30, height: 30}} resizeMode="contain"/>
-                            </TouchableOpacity>
+                            </View>
+                            {this.props.rightText?
+                                <TouchableOpacity style={{paddingRight: 15,paddingLeft: 22}} onPress={() => {
+                                    if(this.props.onPressRight){
+                                        this.props.onPressRight();
+                                    }
+                                }}>
+                                    <Text style={{fontSize: 16, color: '#FFFFFF', textAlign: 'center',}}>{this.props.rightText}</Text>
+                                </TouchableOpacity>:
+                                <TouchableOpacity style={{paddingRight: 15,paddingLeft: 22}} onPress={() => {
+                                    if(this.props.onPressRight){
+                                        this.props.onPressRight();
+                                    }
+                                }}>
+                                    <Image source={require('../images/cabinet/add.png')} style={{width: 30, height: 30}} resizeMode="contain"/>
+                                </TouchableOpacity>
+                            }
                         </View>
                     </LinearGradient>
                 </View>

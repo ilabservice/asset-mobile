@@ -6,14 +6,23 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import DeviceUtils from '../utils/DeviceUtils';
 import Color from "../common/Color";
 import LinearGradient from 'react-native-linear-gradient';
+const PropTypes = require('prop-types');
 
 class Button extends PureComponent {
-    // 构造
+
+    static propTypes = {
+        wrapperStyle: PropTypes.any,
+        style: PropTypes.any,
+        onPress: PropTypes.any,
+    };
+
     constructor(props) {
         super(props);
         this.color = props.color || Color.THEME;
         // 初始状态
     }
+
+
 
     render() {
         return (
@@ -24,7 +33,7 @@ class Button extends PureComponent {
             ) : (
                 <LinearGradient start={{x: 0.1, y: 0}} end={{x: 1, y: 0}}
                                 colors={['#7CD7FF','#6CAAFF']}
-                                style={{marginTop: 26}}>
+                                style={[{marginTop: 26},this.props.wrapperStyle]}>
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={[styles.button, this.props.style]}
