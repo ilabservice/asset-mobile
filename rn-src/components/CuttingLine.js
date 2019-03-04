@@ -1,3 +1,6 @@
+/**
+ * 分割线
+ */
 'use strict';
 import React, {PureComponent} from 'react';
 import {

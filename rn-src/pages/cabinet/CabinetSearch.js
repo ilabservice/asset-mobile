@@ -34,7 +34,7 @@ import DateTimePicker from "../../components/DateTimePicker";
 import StringUtils from "../../utils/StringUtils";
 
 const btnWidth=DeviceUtils.WIDTH*0.75;
-class Cabinetsearch extends PureComponent {
+class CabinetSearch extends PureComponent {
     props: Props;
 
     constructor(props) {
@@ -149,12 +149,12 @@ class Cabinetsearch extends PureComponent {
                         <Text style={{color: '#323232', fontSize: 14, marginTop: 15}}>添加时间</Text>
                     </View>
                     <View style={{width:btnWidth,flexDirection:'row',justifyContent:'space-between',marginTop: 10,}}>
-                        <TouchableOpacity style={{}} onPress={() => {this.dateTimePicker.show();this.timeType = 'start'}} style={{flexDirection:'row'}} >
+                        <TouchableOpacity onPress={() => {this.dateTimePicker.show();this.timeType = 'start'}} style={{flexDirection:'row'}} >
                             <Text style={{color: '#404040', fontSize: 12,}}>{this.state.startText}</Text>
                             <Image style={{width: 6, height: 10,alignSelf:'center',marginLeft:30}} source={require('../../images/cabinet/right.png')}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={{}} onPress={() => {this.dateTimePicker.show();this.timeType = 'end'}} style={{flexDirection:'row'}} >
+                        <TouchableOpacity  onPress={() => {this.dateTimePicker.show();this.timeType = 'end'}} style={{flexDirection:'row'}} >
                             <Text style={{color: '#404040', fontSize: 12,}}>{this.state.endText}</Text>
                             <Image style={{width: 6, height: 10,alignSelf:'center',marginLeft:30}} source={require('../../images/cabinet/right.png')}/>
                         </TouchableOpacity>
@@ -202,4 +202,4 @@ function select(store) {
     return {};
 }
 
-module.exports = connect(select)(Cabinetsearch);
+module.exports = connect(select)(CabinetSearch);

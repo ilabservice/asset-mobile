@@ -25,7 +25,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const FlyScreenHome = require('./home/FlyScreenHome');
 const FlyScreenMine = require('./me/FlyScreenMine');
-const FlyScreenShare = require('./share/FlyScreenShare');
+const FlyScreenChemical = require('./chemical/FlyScreenChemical');
 const FlyScreenCabinet = require('./cabinet/FlyScreenCabinet');
 const Screen1 = require('./Screen1');
 
@@ -42,8 +42,8 @@ const tabInfo = [{
     normalImage: require('../images/tabs/cabinet.png'),
     selectedImage: require('../images/tabs/cabinet_selected.png')
 }, {
-    routeName: 'FlyScreenShare',
-    screen: FlyScreenShare,
+    routeName: 'FlyScreenChemical',
+    screen: FlyScreenChemical,
     title: '化学品',
     normalImage: require('../images/tabs/chemicals.png'),
     selectedImage: require('../images/tabs/chemicals_selected.png')
@@ -122,6 +122,7 @@ class FlyTabsView extends PureComponent {
                     backgroundColor: 'white'
                 },
                 showIcon: true,
+                // showLabel:false,
             }
         };
 

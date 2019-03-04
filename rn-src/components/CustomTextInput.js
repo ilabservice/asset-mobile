@@ -1,5 +1,5 @@
 /**
- * 自定义条目
+ * 自定义输入条目
  */
 'use strict'
 import React, {PureComponent} from 'react';
@@ -160,7 +160,7 @@ var styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         flexDirection: 'row',
-        paddingRight: 15,
+        // paddingRight: 15,
         // height:50,
     },
     wrapperSegment: {
@@ -170,8 +170,8 @@ var styles = StyleSheet.create({
     leftWrapper: {
         width: 150,
         justifyContent:'center',
-        marginLeft: 15,
-        marginRight: 15,
+        // marginLeft: 15,
+        // marginRight: 15,
         alignItems: 'flex-end'
         // backgroundColor:'yellow'
     },

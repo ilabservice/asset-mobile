@@ -125,8 +125,9 @@ class FlyScreenCabinet extends PureComponent {
             <View style={styles.container}>
                 <NavigationSearchBar
                     leftText={"iLabCabinet"}
-                    onPressRight={()=>{SceneUtils.gotoScene('CabinetEdit')}}
-                    onFilter={()=>{SceneUtils.gotoScene('Cabinetsearch')}}
+                    // onPressRight={()=>{SceneUtils.gotoScene('CabinetEdit')}}
+                     onPressRight={()=>{SceneUtils.gotoScene('Screen2')}}
+                    onFilter={()=>{SceneUtils.gotoScene('CabinetSearch')}}
                 />
                 <RefreshFlatList
                     style={styles.list}

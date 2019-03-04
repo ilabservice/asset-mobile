@@ -19,10 +19,11 @@ const StartPageView = require("./splash/StartPageView");
 //柜子
 const CabinetDetail = require('./cabinet/CabinetDetail');
 const CabinetEdit = require('./cabinet/CabinetEdit');
-const Cabinetsearch = require('./cabinet/Cabinetsearch');
+const CabinetSearch = require('./cabinet/CabinetSearch');
 
-
-
+//化学品
+const ChemicalSearch = require('./chemical/ChemicalSearch');
+const ChemicalEdit = require('./chemical/ChemicalEdit');
 
 const Screen1 = require('./Screen1');
 const Screen2 = require('./Screen2');
@@ -35,7 +36,13 @@ const RouteList = {
      //柜子
     'CabinetDetail': CabinetDetail,
     'CabinetEdit': CabinetEdit,
-    'Cabinetsearch': Cabinetsearch,
+    'CabinetSearch': CabinetSearch,
+
+    //化学品
+    'ChemicalSearch': ChemicalSearch,
+    'ChemicalEdit': ChemicalEdit,
+
+
 
     'Screen1': Screen1,
     'Screen2': Screen2,
@@ -57,7 +64,7 @@ class FlyRouters extends PureComponent {
 
     render() {
         const stackNavigatorConfig = {
-            initialRouteName: this.props.token ? 'Tabs' : 'FlyLogin',
+            initialRouteName: this.props.token ? 'CabinetEdit' : 'FlyLogin',
             initialRouteParams: {user: ''},
             navigationOptions: ({navigation}) => {
                 SceneUtils.setStackNavigation(navigation);

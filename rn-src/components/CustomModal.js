@@ -1,6 +1,5 @@
 /**
- * @providesModule FlyModal
- *
+ *弹窗组件
  */
 'use strict'
 import React, {PureComponent} from 'react';

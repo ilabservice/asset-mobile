@@ -1,4 +1,6 @@
-/* @flow */
+/**
+ * tabs选项卡组件
+ */
 import React, {PureComponent} from 'react'
 import {
     View, StyleSheet, Image, TouchableOpacity, Text

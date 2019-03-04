@@ -1,5 +1,5 @@
 /**
- * 通用顶部标题栏
+ * 通用顶部标题栏搜索栏
  * Created by meekoma on 2018/3/15.
  */
 import React, {PureComponent} from 'react';

@@ -7,7 +7,6 @@ import {
     View,
     StyleSheet,
     Text,
-    Button,
     TouchableNativeFeedback,
     Dimensions,
     TouchableOpacity,
@@ -21,15 +20,20 @@ import {
 } from 'react-native';
 import NavigationBar from "../components/NavigationBar";
 import Language from "../common/language/Language";
+
 const {connect} = require('react-redux');
 const SceneUtils = require('../utils/SceneUtils');
+import DropdownSelect from "../components/DropdownSelect";
+
+import Button from "../components/Button";
 
 class Screen3 extends PureComponent {
     props: Props;
+
     constructor(props) {
         super(props);
         this.state = {
-
+            showPop: false,
         };
 
     }
@@ -51,22 +55,21 @@ class Screen3 extends PureComponent {
         return (
             <View style={styles.container}>
                 <NavigationBar title={Language.get(Language.TEXTS.account.configuration)}/>
-                <Text style={{fontSize:30,color:'#555555',alignSelf:'center'}}>页面3</Text>
+                <Text style={{fontSize: 30, color: '#555555', alignSelf: 'center'}}>页面3</Text>
+                <Text style={{fontSize: 30, color: '#555555', alignSelf: 'center'}}>页面3</Text>
 
-                <Button
-                    title="返回"
-                    onPress={() =>
-                        SceneUtils.gotoScene('Screen2')
-                    }
+                <DropdownSelect
+                />
+                {/*<Text style={{fontSize: 30, color: '#555555', alignSelf: 'center'}}>页面3</Text>*/}
+                <DropdownSelect
                 />
 
                 <Button
-                    title="去tab页面"
-                    onPress={() =>
-                        SceneUtils.gotoTabView('FlyScreenMine')
-                    }
+                title=" 编辑"
+                onPress={() =>
+                SceneUtils.gotoTabView('ChemicalEdit')
+                }
                 />
-
             </View>
         )
     }
@@ -82,8 +85,7 @@ const styles = StyleSheet.create({
 });
 
 function select(store) {
-    return {
-
-    };
+    return {};
 }
+
 module.exports = connect(select)(Screen3);
